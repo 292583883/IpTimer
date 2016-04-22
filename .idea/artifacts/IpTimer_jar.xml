@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact build-on-make="true" name="IpTimer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/IpTimer_jar</output-path>
+    <root id="root">
+      <element id="archive" name="IpTimer.jar">
+        <element id="module-output" name="IpTimer" />
+      </element>
+      <element id="file-copy" path="$PROJECT_DIR$/libs/sdk-1.0.jar" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/conf.properties" />
+    </root>
+  </artifact>
+</component>
