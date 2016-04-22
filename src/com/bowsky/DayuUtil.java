@@ -84,7 +84,6 @@ public class DayuUtil {
 	
 	
 	public static void main(String[] args){
-		getInstance().send("变更验证","SMS_5545228","18758917760", "123456","18758917760");
-		
+
 	}
 }
