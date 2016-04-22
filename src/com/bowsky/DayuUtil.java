@@ -6,6 +6,9 @@ import com.taobao.api.TaobaoClient;
 import com.taobao.api.request.AlibabaAliqinFcSmsNumSendRequest;
 import com.taobao.api.response.AlibabaAliqinFcSmsNumSendResponse;
 
+import java.io.FileInputStream;
+import java.util.Properties;
+
 public class DayuUtil {
 	
 	private static DayuUtil dayuUtil;
@@ -20,7 +23,7 @@ public class DayuUtil {
 	}
 	
 	private DayuUtil() {
-		client = new DefaultTaobaoClient("https://eco.taobao.com/router/rest", "23321661", "73e6254b87d12cfff925b0cba5151cf7");
+		client = new DefaultTaobaoClient("https://eco.taobao.com/router/rest", "appid", "appkey");
 		req = new AlibabaAliqinFcSmsNumSendRequest();
 		req.setExtend("123456");
 		req.setSmsType("normal");
@@ -52,11 +55,8 @@ public class DayuUtil {
 				req.setSmsParamString("{\"code\":\""+args[3]+"\",\"product\":\""+args[4]+"\"}");
 				break;
 				//SMS_5545229
-			case "SMS_5545230"://活动兑换商品-->验证码${code}，您正在参加${product}的${item}活动，请确认系本人申请。
+			case "SMS_5545230":
 				req.setSmsParamString("{\"code\":\""+args[3]+"\",\"product\":\""+args[4]+"\",\"item\":\""+args[5]+"\"}");
-				break;
-			case "SMS_8000018"://尊敬的${name}，您已成功兑换商品，共消耗积分${score}
-				req.setSmsParamString("{\"name\":\""+args[3]+"\",\"score\":\""+args[4]+"\"}");
 				break;
 			default:
 				//TODO 成功兑换发送短信
@@ -86,12 +86,5 @@ public class DayuUtil {
 	public static void main(String[] args){
 		getInstance().send("变更验证","SMS_5545228","18758917760", "123456","18758917760");
 		
-		getInstance().send("注册验证","SMS_5545231","18758917760", "123456","亿畅网门店系统");
-		getInstance().send("变更验证","SMS_5545229","18758917760", "123456","18758917760");
-		
-		getInstance().send("活动验证","SMS_5545230","18758917760", "123456","亿畅网积分兑换","商品概述");
-
-		getInstance().send("活动验证","SMS_5545230","18758917760", "","亿品商城积分兑换","共消耗积分");
-		//getInstance().send("SMS_5545228","18758917760", "hello");
 	}
 }
